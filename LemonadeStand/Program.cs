@@ -10,8 +10,8 @@ namespace LemonadeStand
     {
         static void Main(string[] args)
         {
-            Player FirstPlayer = new Player();
-            FirstPlayer.InitiatePlayer();
+            Game NewGame = new Game();
+            NewGame.RunStartup();
         }
     }
 }

@@ -9,22 +9,28 @@ namespace LemonadeStand
     public class Player
     {
         private string UserName;
-        private int StartingFunds;
+        private double funds = 200;
         public void InitiatePlayer()
         {
             GetPlayerName();
-            GetStartingFunds();
+            Console.Clear();
         }
         private void GetPlayerName()
         {
             Console.WriteLine("Enter your Username!");
             UserName = Console.ReadLine();
         }
-        private void GetStartingFunds()
+        
+        public double Funds
         {
-            StartingFunds = 50;
-            Console.WriteLine("You start with" + " $" + StartingFunds + "\n Press enter to continue");
-            Console.ReadLine();
+            get
+            {
+                return funds;
+            }
+            set
+            {
+                funds = value;
+            }
         }
     }
 }
