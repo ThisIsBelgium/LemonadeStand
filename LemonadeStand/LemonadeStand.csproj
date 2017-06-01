@@ -7,8 +7,8 @@
     <ProjectGuid>{40B08C84-8831-4CC3-A48B-F8230824C65F}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>LS2</RootNamespace>
-    <AssemblyName>LS2</AssemblyName>
+    <RootNamespace>LemonadeStand</RootNamespace>
+    <AssemblyName>LemonadeStand</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
