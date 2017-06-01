@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LS2
+namespace LemonadeStand
 {
     public class Lemon
     {
