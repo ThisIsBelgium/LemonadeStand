@@ -4,130 +4,139 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LemonadeStand
+namespace LS2
 {
     public class Store
     {
-        private double LemonPrice;
-        private double SugarPrice;
-        private double IcePrice;
-        public double LemonTotalCost;
-        public double SugarTotalCost;
-        public double IceTotalCost;
+        public Lemon lemon = new Lemon();
+        public int lemonAmount;
+        private double lemonPrice;
+        public double lemonTotalCost;
+        public Sugar sugar = new Sugar();
+        public int sugarAmount;
+        private double sugarPrice;
+        public double sugarTotalCost;
+        public Ice ice = new Ice();
+        public int iceAmount;
+        private double icePrice;
+        public double iceTotalCost;
+        public Cup cup = new Cup();
+        public int cupAmount;
+        private double cupPrice;
+        public double cupTotalCost;
+
+
 
         public void GeneratePrices()
         {
-            GetLemonPrice();
-            GetSugarPrice();
-            GetIcePrice();
-        }
-        public void BuyLemons(Player FirstPlayer,Inventory Inventory)
-        {
-            int LemonAmount = GetLemonAmount(FirstPlayer,Inventory);
-            LemonTotalCost = GetLemonCost(LemonAmount,LemonPrice);
-            if (LemonTotalCost >= FirstPlayer.Funds)
-            {
-                Console.WriteLine("You can't afford that!" + "\nYou have:"+ FirstPlayer.Funds + "$ remaining" + "\nTry again" + "\nPress enter to continue");
-                Console.ReadLine();
-                Console.Clear();
-                Inventory.AmountLemons -= LemonAmount;
-                Console.WriteLine("Lemons currently cost:" + LemonPrice + "\nSugar currently costs: " + SugarPrice + "\nIce currently costs:" + IcePrice);
-                BuyLemons(FirstPlayer, Inventory);
-                
-            }             
-         }
-        private void GetLemonPrice()
-        {
-            LemonPrice = GetRandomNumber(1.5, 3.6);
-            LemonPrice = Math.Round(LemonPrice, 2);
-            Console.WriteLine("Lemons currently cost:" + LemonPrice);
-        }
-        private int GetLemonAmount(Player FirstPlayer, Inventory Inventory)
-        {
-            Console.WriteLine("How many lemons would you like?");
-            Console.WriteLine("You currently have "+ FirstPlayer.Funds +"$");
-            int LemonAmount = int.Parse(Console.ReadLine());
-            Inventory.AmountLemons += LemonAmount;
-            return LemonAmount;
-        }
-        private double GetLemonCost(int LemonAmount, double LemonPrice)
-        {
-            double LemonTotal = LemonPrice * LemonAmount;
-            return LemonTotal;
-        }
-        public void BuySugar(Player FirstPlayer,Inventory Inventory)
-        {
-            int SugarAmount = GetSugarAmount(FirstPlayer,Inventory);
-            SugarTotalCost = GetSugarCost(SugarAmount, SugarPrice);
-            if (SugarTotalCost >= FirstPlayer.Funds)
-            {
-                Console.WriteLine("You can't afford that!" + "\nYou have:" + FirstPlayer.Funds + "$ remaining" + "\nTry again" + "\nPress enter to continue");
-                Console.ReadLine();
-                Console.Clear();
-                Inventory.AmountSugar -=SugarAmount;
-                Console.WriteLine("Lemons currently cost:" + LemonPrice + "\nSugar currently costs: " + SugarPrice + "\nIce currently costs:" + IcePrice);
-                BuySugar(FirstPlayer, Inventory);
+            lemon.GetPrice();
+            lemonPrice = lemon.lemonPrice;
+            sugar.GetPrice();
+            sugarPrice = sugar.sugarPrice;
+            ice.GetPrice();
+            icePrice = ice.icePrice;
+            cup.GetPrice();
+            cupPrice = cup.cupPrice;
 
+        }
+
+        //LEMON CALC
+        public void BuyLemons(Player player)
+        {
+            GetLemonAmount(player);
+            LemonTotalCost();
+            if (lemonTotalCost >= player.Funds)
+            {
+                Console.WriteLine("You can't afford that!" + "\nYou have:" + player.Funds + "$ remaining" + "\nTry again" + "\nPress enter to continue");
+                Console.ReadLine();
+                Console.Clear();
+                BuyLemons(player);
             }
         }
-        private void GetSugarPrice()
+        private void GetLemonAmount(Player player)
         {
-            SugarPrice = GetRandomNumber(.62, 1.15);
-            SugarPrice = Math.Round(SugarPrice, 2);
-            Console.WriteLine("Sugar currently costs:" + SugarPrice);
+            Console.WriteLine("How many lemons do you want?" + "\n lemons currently cost:" + lemonPrice + "\n You currently have:" + player.Funds + "$" + " and " + player.inventory.lemons.Count + " lemons");
+            lemonAmount = int.Parse(Console.ReadLine());
         }
-        private int GetSugarAmount(Player FirstPlayer, Inventory Inventory)
+        private void LemonTotalCost()
         {
-            Console.WriteLine("How much sugar would you like?");
-            Console.WriteLine("You currently have " + FirstPlayer.Funds + "$");
-            int SugarAmount = int.Parse(Console.ReadLine());
-            Inventory.AmountSugar += SugarAmount;
-            return SugarAmount;
+            lemonTotalCost = lemonAmount * lemonPrice;
         }
-        private double GetSugarCost(int SugarAmount, double SugarPrice)
-        {
-            double SugarCost = SugarAmount * SugarPrice;
-            return SugarCost;       
-        }
-        public void BuyIce(Player FirstPlayer,Inventory Inventory)
-        {
 
-            int IceAmount = GetIceAmount(FirstPlayer,Inventory);
-            IceTotalCost = GetIceCost(IceAmount, IcePrice);
-            if (IceTotalCost >= FirstPlayer.Funds)
+        //SUGAR CALC
+        public void BuySugar(Player player)
+        {
+            GetSugarAmount(player);
+            SugarTotalCost();
+            if (sugarTotalCost >= player.Funds)
             {
-                Console.WriteLine("You can't afford that!" + "\nYou have:" + FirstPlayer.Funds + "$ remaining" + "\nTry again" + "\nPress enter to continue");
+                Console.WriteLine("You can't afford that!" + "\nYou have:" + player.Funds + "$ remaining" + "\nTry again" + "\nPress enter to continue");
                 Console.ReadLine();
                 Console.Clear();
-                Inventory.AmountIce = 0;
-                Console.WriteLine("Lemons currently cost:" + LemonPrice + "\nSugar currently costs: " + SugarPrice + "\nIce currently costs:" + IcePrice);
-                BuyIce(FirstPlayer, Inventory);
-
+                BuySugar(player);
             }
         }
-        private void GetIcePrice()
+        private void GetSugarAmount(Player player)
         {
-            IcePrice = GetRandomNumber(.3, .6);
-            IcePrice = Math.Round(IcePrice, 2);
-            Console.WriteLine("Ice currently costs:"+ IcePrice);
+            Console.WriteLine("How much sugar do you want?" + "\n sugar currently cost:" + sugarPrice + "\n You currently have:" + player.Funds + "$" + " and " + player.inventory.sugar.Count + " cups of sugar");
+            sugarAmount = int.Parse(Console.ReadLine());
         }
-        private int GetIceAmount(Player FirstPlayer, Inventory Inventory)
+        private void SugarTotalCost()
         {
-            Console.WriteLine("How much ice would you like?");
-            Console.WriteLine("You currently have " + FirstPlayer.Funds + "$");
-            int IceAmount = int.Parse(Console.ReadLine());
-            Inventory.AmountIce += IceAmount;
-            return IceAmount;
+            sugarTotalCost = sugarAmount * sugarPrice;
         }
-        private double GetIceCost(int IceAmount,double IcePrice)
+
+
+        //ICE CALC
+        public void BuyIce(Player player)
         {
-            double IceCost = IceAmount * IcePrice;
-            return IceCost;
+            GetIceAmount(player);
+            IceTotalCost();
+            if (iceTotalCost >= player.Funds)
+            {
+                Console.WriteLine("You can't afford that!" + "\nYou have:" + player.Funds + "$ remaining" + "\nTry again" + "\nPress enter to continue");
+                Console.ReadLine();
+                Console.Clear();
+                BuyIce(player);
+            }
         }
-        private double GetRandomNumber(double min, double max)
+        private void GetIceAmount(Player player)
         {
-            Random random = new Random();
-            return random.NextDouble() * (max - min) + min;
+            Console.WriteLine("How much ice do you want?" + "\n ice currently cost:" + icePrice + "\n You currently have:" + player.Funds + "$" + " and " + player.inventory.ice.Count + " cups of ice");
+            iceAmount = int.Parse(Console.ReadLine());
         }
+        private void IceTotalCost()
+        {
+            iceTotalCost = iceAmount * icePrice;
+        }
+
+
+        //CUP CALC
+        public void BuyCup(Player player)
+        {
+            GetCupAmount(player);
+            CupTotalCost();
+            if (cupTotalCost >= player.Funds)
+            {
+                Console.WriteLine("You can't afford that!" + "\nYou have:" + player.Funds + "$ remaining" + "\nTry again" + "\nPress enter to continue");
+                Console.ReadLine();
+                Console.Clear();
+                BuyCup(player);
+            }
+
+        }
+        private void GetCupAmount(Player player)
+        {
+            Console.WriteLine("How many cups do you want?" + "\n cups currently cost:" + cupPrice + "\n You currently have:" + player.Funds + "$" + " and " + player.inventory.cups.Count + " cups ");
+            cupAmount = int.Parse(Console.ReadLine());
+        }
+        private void CupTotalCost()
+        {
+            cupTotalCost = cupAmount * cupPrice;
+        }
+
+
     }
+
 }
+

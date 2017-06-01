@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LemonadeStand
+namespace LS2
 {
     public class Player
     {
+        public Inventory inventory = new Inventory();
         private string UserName;
         private double funds = 200;
         public void InitiatePlayer()
@@ -20,7 +21,7 @@ namespace LemonadeStand
             Console.WriteLine("Enter your Username!");
             UserName = Console.ReadLine();
         }
-        
+
         public double Funds
         {
             get

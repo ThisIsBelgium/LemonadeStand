@@ -1,0 +1,6 @@
+C:\Users\wheeler\Desktop\School\C#\LS2\LS2\bin\Debug\LS2.exe.config
+C:\Users\wheeler\Desktop\School\C#\LS2\LS2\obj\Debug\LS2.csprojResolveAssemblyReference.cache
+C:\Users\wheeler\Desktop\School\C#\LS2\LS2\bin\Debug\LS2.exe
+C:\Users\wheeler\Desktop\School\C#\LS2\LS2\bin\Debug\LS2.pdb
+C:\Users\wheeler\Desktop\School\C#\LS2\LS2\obj\Debug\LS2.exe
+C:\Users\wheeler\Desktop\School\C#\LS2\LS2\obj\Debug\LS2.pdb
