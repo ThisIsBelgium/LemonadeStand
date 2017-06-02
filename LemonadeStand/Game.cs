@@ -14,7 +14,7 @@ namespace LemonadeStand
         public List<Weather> forecast = new List<Weather>();
 
 
-        public void Run()
+        public void Run(Game game)
         {
             player.InitiatePlayer();
             store.GeneratePrices();
@@ -22,6 +22,7 @@ namespace LemonadeStand
             Console.Clear();
             DisplayInventory();
             GetWeatherInformation();
+            player.recipe.SetRecipe(player.inventory,game);
         }
         private void InventoryRestock(Player player)
         {
@@ -73,7 +74,7 @@ namespace LemonadeStand
             for (int i = 0; i <= 6; i++)
             {
                 forecast.Add(new Weather(0,null,false));
-                System.Threading.Thread.Sleep(100);
+                System.Threading.Thread.Sleep(150);
             }
         }
         private void CheckDisaster()
@@ -99,12 +100,13 @@ namespace LemonadeStand
             string response = Console.ReadLine();
             if (response == "yes")
             {
-                for(int i = 0; i <= 6; i++)
+                for(int i = 1; i <= 6; i++)
                 {
-                    Console.WriteLine(forecast[i].temperature + " Degrees" + "\n" + forecast[i].conditions);
+                    Console.WriteLine(forecast[i].temperature + " Degrees" + "\n" + forecast[i].conditions +"\n");
                     
                 }
             } Console.ReadLine();
+            Console.Clear();
 
         }
 

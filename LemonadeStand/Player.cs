@@ -19,7 +19,9 @@ namespace LemonadeStand
         }
         private void GetPlayerName()
         {
-            Console.WriteLine("Welcome to lemonade stand enter your username to play!");
+            Console.WriteLine("Welcome to lemonade stand!");
+            Console.WriteLine("You will attempt to make as much profit over 7 days as you can!" + "\nYou will design a recipe for each pitcher and each pitcher will fill 10 cups" +"\nCustomers will change based on the current weather!");
+            Console.WriteLine("Enter your username to play!");
             UserName = Console.ReadLine();
 
         }

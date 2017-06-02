@@ -25,6 +25,7 @@ namespace LemonadeStand
             temperature = GetRandomNumber(45, 85);
             return temperature;
         }
+            
         private string GetConditions()
         {
             int randomCondition = GetRandomNumber(1, 4);
