@@ -8,6 +8,17 @@ namespace LemonadeStand
 {
     public class Customer
     {
-        private int temperaturePreference;
+        public int temperaturePreference;
+        public int tastePreference;
+        public double budget;
+
+        public Customer()
+        {
+            //this.temperaturePreference = GetTemperature();
+            //this.tastePreference = GetPreference();
+            //this.tastePreference = GetBudget();
+
+        }
+
     }
 }

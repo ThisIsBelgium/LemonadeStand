@@ -16,7 +16,6 @@ namespace LemonadeStand
         {
             this.temperature = GetTemperature();
             this.conditions = GetConditions();
-            this.disaster = CheckDisaster();
         }
 
        
@@ -42,21 +41,6 @@ namespace LemonadeStand
                     return conditions;
             }
             return conditions;   
-        }
-        private bool CheckDisaster()
-        {
-            int disasterCheck = GetRandomNumber(1,100);
-            if(disasterCheck == 13)
-            {
-                disaster = true;
-                return disaster;
-            }
-            else
-            {
-                disaster = false;
-                return disaster;
-            }
-
         }
         private int GetRandomNumber(int min,int max)
         {
