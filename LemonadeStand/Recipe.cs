@@ -104,5 +104,9 @@ namespace LemonadeStand
             }
 
         }
+        public void SellCups(Inventory inventory,double dailyProfit)
+        {
+            Filledcups.RemoveAt(0);
+        }
     }
 }

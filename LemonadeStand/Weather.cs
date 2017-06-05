@@ -12,7 +12,7 @@ namespace LemonadeStand
         public string conditions;
         public bool disaster;
 
-        public Weather(int temperature,string conditions,bool disaster)
+        public Weather()
         {
             this.temperature = GetTemperature();
             this.conditions = GetConditions();

@@ -17,36 +17,21 @@ namespace LemonadeStand
         {
             player.InitiatePlayer();
             GetWeatherInformation();
-            day.NewDay(player, game, forecast);
+            for (int days = 0; days <= 7; days++)
+            {
+                day.NewDay(player, game, forecast,days);
+            }
         }
         private void GetWeatherInformation()
         {
-            SetupForecast();
-            CheckDisaster();
-            
+            SetupForecast();     
         }
         private void SetupForecast()
         {
             for (int i = 0; i <= 6; i++)
             {
-                forecast.Add(new Weather(0, null, false));
-                System.Threading.Thread.Sleep(150);
-            }
-        }
-        private void CheckDisaster()
-        {
-            for (int i = 0; i <= 6; i++)
-            {
-                if (forecast[i].disaster == true)
-                {
-                    Console.WriteLine("OH NOES DISASTER HAS STRUCK AND HALF YOUR LEMONS HAVE GONE BAD");
-                    double totalLemons = player.inventory.lemons.Count;
-                    totalLemons = Math.Round(totalLemons / 2);
-                    for (int a = 0; a <= totalLemons - 1; a++)
-                    {
-                        player.inventory.lemons.RemoveAt(a);
-                    }
-                }
+                forecast.Add(new Weather());
+                System.Threading.Thread.Sleep(50);
             }
         }  
     }

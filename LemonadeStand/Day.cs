@@ -8,15 +8,18 @@ namespace LemonadeStand
 {
     public class Day
     {
+        List<Customer> customers = new List<Customer>();
         Store store = new Store();
-        public void NewDay(Player player,Game game,List<Weather>forecast)
+        public double dailyProfit;
+        public void NewDay(Player player,Game game,List<Weather>forecast,int days)
         {
             store.GeneratePrices();
-            ViewForecast(forecast);
+            ViewForecast(forecast,days);
             InventoryRestock(player);
             Console.Clear();
             DisplayInventory(player);
             player.recipe.SetRecipe(player.inventory, game);
+            //GenerateCustomers();
         }
         private void InventoryRestock(Player player)
         {
@@ -58,14 +61,14 @@ namespace LemonadeStand
             }
         }
        
-        private void ViewForecast(List<Weather>forecast)
+        private void ViewForecast(List<Weather>forecast,int days)
         {
-            Console.WriteLine("Here's your forecast for today!" + "\n" + forecast[0].temperature + " Degrees" + "\n" + forecast[0].conditions);
+            Console.WriteLine("Here's your forecast for today!" + "\n" + forecast[days].temperature + " Degrees" + "\n" + forecast[days].conditions);
             Console.WriteLine("Would you like to see the forecast for the week?(yes/no)");
             string response = Console.ReadLine();
             if (response == "yes")
             {
-                for (int i = 1; i <= 6; i++)
+                for (int i = 1; i <= 6-days; i++)
                 {
                     Console.WriteLine(forecast[i].temperature + " Degrees" + "\n" + forecast[i].conditions + "\n");
 
