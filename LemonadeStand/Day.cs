@@ -55,7 +55,7 @@ namespace LemonadeStand
         {
             Console.WriteLine("You have " + "\n" + player.inventory.lemons.Count + " lemons" + "\n" + player.inventory.sugar.Count + " cups of sugar" +
                 "\n" + player.inventory.ice.Count + " cups of ice" + "\n" + player.inventory.cups.Count + " cups");
-            Console.WriteLine("Do you need more supplies (yes/no)" + "\n You have" + player.Funds + "$ remaining");
+            Console.WriteLine("Do you need more supplies (yes/no)" + "\n You have $" + player.Funds + " remaining");
             string resupplyCheck = Console.ReadLine();
             if (resupplyCheck == "yes")
             {
@@ -77,8 +77,6 @@ namespace LemonadeStand
 
                 }
             }
-            Console.Clear();
-
         }
         private void SellCup(Player player, Inventory inventory, Game game, Day day)
         {
