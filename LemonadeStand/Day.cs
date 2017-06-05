@@ -7,19 +7,22 @@ using System.Threading.Tasks;
 namespace LemonadeStand
 {
     public class Day
-    {
+    { 
         List<Customer> customers = new List<Customer>();
         Store store = new Store();
         public double dailyProfit;
-        public void NewDay(Player player,Game game,List<Weather>forecast,int days)
+        public void NewDay(Player player, Game game, List<Weather> forecast, int days, Inventory inventory, Day day)
         {
+            Console.Clear();
             store.GeneratePrices();
-            ViewForecast(forecast,days);
+            ViewForecast(forecast, days);
             InventoryRestock(player);
             Console.Clear();
             DisplayInventory(player);
             player.recipe.SetRecipe(player.inventory, game);
-            //GenerateCustomers();
+            GenerateCustomers(forecast, days);
+            OpenStore(player, inventory, game, day);
+            DisplayDailyProfit(player);
         }
         private void InventoryRestock(Player player)
         {
@@ -60,26 +63,125 @@ namespace LemonadeStand
                 DisplayInventory(player);
             }
         }
-       
-        private void ViewForecast(List<Weather>forecast,int days)
+
+        private void ViewForecast(List<Weather> forecast, int days)
         {
             Console.WriteLine("Here's your forecast for today!" + "\n" + forecast[days].temperature + " Degrees" + "\n" + forecast[days].conditions);
             Console.WriteLine("Would you like to see the forecast for the week?(yes/no)");
             string response = Console.ReadLine();
             if (response == "yes")
             {
-                for (int i = 1; i <= 6-days; i++)
+                for (int i = 1; i <= 6 - days; i++)
                 {
                     Console.WriteLine(forecast[i].temperature + " Degrees" + "\n" + forecast[i].conditions + "\n");
 
                 }
             }
-            Console.ReadLine();
             Console.Clear();
 
         }
+        private void SellCup(Player player, Inventory inventory, Game game, Day day)
+        {
+            if (player.recipe.filledCups.Count <= 1)
+            {
+                Console.WriteLine("Thats one pitcher down!");
+                player.recipe.MakeAdditionalPitchers(inventory, game, day, player);
 
+            }
+            dailyProfit += player.recipe.filledCups[0].cupPrice;
+            player.recipe.filledCups.RemoveAt(0);
+        }
+        private void GenerateCustomers(List<Weather> forecast, int days)
+        {
+            if (forecast[days].conditions == "Sunny")
+            {
+                for (int i = 0; i <= 149; i++)
+                {
+                    System.Threading.Thread.Sleep(15);
+                    customers.Add(new Customer());
+                }
+            }
+            if (forecast[days].conditions == "Cloudy")
+            {
+                for (int i = 0; i <= 99; i++)
+                {
+                    System.Threading.Thread.Sleep(15);
+                    customers.Add(new Customer());
+                }
+            }
+            if (forecast[days].conditions == "Rain-y")
+            {
+                for (int i = 0; i <= 49; i++)
+                {
+                    System.Threading.Thread.Sleep(15);
+                    customers.Add(new Customer());
+                }
+            }
 
+        }
+        private void OpenStore(Player player, Inventory inventory, Game game, Day day)
+
+        {
+            foreach (Customer customer in customers)
+            {
+                if (player.recipe.filledCups.Count == 0)
+                {
+                    return;
+                }
+                if (customer.tastePreference == 0)
+                {
+                    if (player.recipe.lemonAmount > player.recipe.sugarAmount)
+                    {
+                        if (customer.temperaturePreference == 0)
+                        {
+                            if (customer.budget >= player.recipe.filledCups[0].cupPrice && player.recipe.iceAmount >= 3)
+                            {
+                                Console.WriteLine("One cup sold!");
+                                SellCup(player, inventory, game, day);
+                            }
+                        }
+                        else if (customer.temperaturePreference == 1)
+                        {
+                            if (customer.budget >= player.recipe.filledCups[0].cupPrice && player.recipe.iceAmount <= 3)
+                            {
+                                Console.WriteLine("One cup sold!");
+                                SellCup(player, inventory, game, day);
+                            }
+                        }
+                    }
+                }
+                else if (customer.tastePreference == 1)
+                {
+                    if (player.recipe.lemonAmount <= player.recipe.sugarAmount)
+                    {
+                        if (customer.temperaturePreference == 0)
+                        {
+                            if (customer.budget >= player.recipe.filledCups[0].cupPrice && player.recipe.iceAmount >= 3)
+                            {
+                                Console.WriteLine("One cup sold!");
+                                SellCup(player, inventory, game, day);
+                            }
+                        }
+                        else if (customer.temperaturePreference == 1)
+                        {
+                            if (customer.budget >= player.recipe.filledCups[0].cupPrice && player.recipe.iceAmount <= 3)
+                            {
+                                Console.WriteLine("One cup sold!");
+                                SellCup(player, inventory, game, day);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        public void DisplayDailyProfit(Player player)
+        {
+            Console.WriteLine("$" + dailyProfit + " earned today");
+            player.Funds += dailyProfit;
+            Console.WriteLine("press enter to continue to the next day");
+            Console.ReadLine();
+
+        }
     }
 }
 

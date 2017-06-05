@@ -10,7 +10,6 @@ namespace LemonadeStand
     {
         public int temperature;
         public string conditions;
-        public bool disaster;
 
         public Weather()
         {

@@ -21,18 +21,18 @@ namespace LemonadeStand
         }
         private int GetTemperaturePreference()
         {
-            temperaturePreference = GetRandomNumber(1, 6);
+            temperaturePreference = GetRandomNumber(0, 2);
             return temperaturePreference;
         }
         private int GetTastePreference()
         {
-            tastePreference = GetRandomNumber(1, 5);
+            tastePreference = GetRandomNumber(0, 2);
             return tastePreference;
 
         }
         private double GetBudget()
         {
-            budget = GetRandomDouble(.25, 1.75);
+            budget = Math.Round(GetRandomDouble(.1, 1.76),2);
             return budget;
 
 

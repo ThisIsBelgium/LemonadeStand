@@ -19,7 +19,7 @@ namespace LemonadeStand
             GetWeatherInformation();
             for (int days = 0; days <= 7; days++)
             {
-                day.NewDay(player, game, forecast,days);
+                day.NewDay(player, game, forecast,days,player.inventory,day);
             }
         }
         private void GetWeatherInformation()
