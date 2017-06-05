@@ -47,7 +47,7 @@ namespace LemonadeStand
             LemonTotalCost();
             if (lemonTotalCost >= player.Funds)
             {
-                Console.WriteLine("You can't afford that!" + "\nYou have:" + player.Funds + "$ remaining" + "\nTry again" + "\nPress enter to continue");
+                Console.WriteLine("You can't afford that!" + "\nYou have:" + Math.Round(player.Funds,2) + "$ remaining" + "\nTry again" + "\nPress enter to continue");
                 Console.ReadLine();
                 Console.Clear();
                 BuyLemons(player);
@@ -57,7 +57,7 @@ namespace LemonadeStand
         {
             try
             {
-                Console.WriteLine("How many lemons do you want?" + "\n lemons currently cost:" + lemonPrice + "\n You currently have:" + player.Funds + "$" + " and " + player.inventory.lemons.Count + " lemons");
+                Console.WriteLine("How many lemons do you want?" + "\n lemons currently cost:" + lemonPrice + "\n You currently have:" + Math.Round(player.Funds,2) + "$" + " and " + player.inventory.lemons.Count + " lemons");
                 lemonAmount = int.Parse(Console.ReadLine());
             }
             catch(Exception)
@@ -78,7 +78,7 @@ namespace LemonadeStand
             SugarTotalCost();
             if (sugarTotalCost >= player.Funds)
             {
-                Console.WriteLine("You can't afford that!" + "\nYou have:" + player.Funds + "$ remaining" + "\nTry again" + "\nPress enter to continue");
+                Console.WriteLine("You can't afford that!" + "\nYou have:" + Math.Round(player.Funds, 2) + "$ remaining" + "\nTry again" + "\nPress enter to continue");
                 Console.ReadLine();
                 Console.Clear();
                 BuySugar(player);
@@ -88,7 +88,7 @@ namespace LemonadeStand
         {
             try
             {
-                Console.WriteLine("How much sugar do you want?" + "\n sugar currently cost:" + sugarPrice + "\n You currently have:" + player.Funds + "$" + " and " + player.inventory.sugar.Count + " cups of sugar");
+                Console.WriteLine("How much sugar do you want?" + "\n sugar currently cost:" + sugarPrice + "\n You currently have:" + Math.Round(player.Funds, 2) + "$" + " and " + player.inventory.sugar.Count + " cups of sugar");
                 sugarAmount = int.Parse(Console.ReadLine());
             }
             catch(Exception)
@@ -110,7 +110,7 @@ namespace LemonadeStand
             IceTotalCost();
             if (iceTotalCost >= player.Funds)
             {
-                Console.WriteLine("You can't afford that!" + "\nYou have:" + player.Funds + "$ remaining" + "\nTry again" + "\nPress enter to continue");
+                Console.WriteLine("You can't afford that!" + "\nYou have:" + Math.Round(player.Funds, 2) + "$ remaining" + "\nTry again" + "\nPress enter to continue");
                 Console.ReadLine();
                 Console.Clear();
                 BuyIce(player);
@@ -120,7 +120,7 @@ namespace LemonadeStand
         {
             try
             {
-                Console.WriteLine("How much ice do you want?" + "\n ice currently cost:" + icePrice + "\n You currently have:" + player.Funds + "$" + " and " + player.inventory.ice.Count + " cups of ice");
+                Console.WriteLine("How much ice do you want?" + "\n ice currently cost:" + icePrice + "\n You currently have:" + Math.Round(player.Funds, 2) + "$" + " and " + player.inventory.ice.Count + " cups of ice");
                 iceAmount = int.Parse(Console.ReadLine());
             }
             catch(Exception)
@@ -142,7 +142,7 @@ namespace LemonadeStand
             CupTotalCost();
             if (cupTotalCost >= player.Funds)
             {
-                Console.WriteLine("You can't afford that!" + "\nYou have:" + player.Funds + "$ remaining" + "\nTry again" + "\nPress enter to continue");
+                Console.WriteLine("You can't afford that!" + "\nYou have:" + Math.Round(player.Funds, 2) + "$ remaining" + "\nTry again" + "\nPress enter to continue");
                 Console.ReadLine();
                 Console.Clear();
                 BuyCup(player);
@@ -153,7 +153,7 @@ namespace LemonadeStand
         {
             try
             {
-                Console.WriteLine("How many cups do you want?" + "\n cups currently cost:" + cupPrice + "\n You currently have:" + player.Funds + "$" + " and " + player.inventory.cups.Count + " cups ");
+                Console.WriteLine("How many cups do you want?" + "\n cups currently cost:" + cupPrice + "\n You currently have:" + Math.Round(player.Funds, 2) + "$" + " and " + player.inventory.cups.Count + " cups ");
                 cupAmount = int.Parse(Console.ReadLine());
             }
             catch(Exception)

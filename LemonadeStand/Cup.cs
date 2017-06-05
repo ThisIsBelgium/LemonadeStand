@@ -13,7 +13,7 @@ namespace LemonadeStand
 
         public void GetPrice()
         {
-            cupPrice = Math.Round(GetRandomNumber(.1, .3), 2);
+            cupPrice = Math.Round(GetRandomNumber(.1, .2), 2);
         }
         public void GetPricePerCup()
         {

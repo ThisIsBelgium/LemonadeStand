@@ -34,12 +34,20 @@ namespace LemonadeStand
 
         private void GetLemonAmount(Inventory inventory)
         {
-            Console.WriteLine("How many lemons do you want per pitcher?" + "\nYou have " + inventory.lemons.Count + " lemons");
-            lemonAmount = int.Parse(Console.ReadLine());
-            if (lemonAmount >= inventory.lemons.Count)
+            try
             {
-                Console.WriteLine("You don't have enough lemons!" + "\nPress enter to try again!");
-                Console.ReadLine();
+                Console.WriteLine("How many lemons do you want per pitcher?" + "\nYou have " + inventory.lemons.Count + " lemons");
+                lemonAmount = int.Parse(Console.ReadLine());
+                if (lemonAmount >= inventory.lemons.Count)
+                {
+                    Console.WriteLine("You don't have enough lemons!" + "\nPress enter to try again!");
+                    Console.ReadLine();
+                    GetLemonAmount(inventory);
+                }
+            }
+            catch (Exception)
+            {
+                Console.Clear();
                 GetLemonAmount(inventory);
             }
         }
@@ -52,12 +60,20 @@ namespace LemonadeStand
         }
         private void GetSugarAmount(Inventory inventory)
         {
-            Console.WriteLine("How much sugar do you want per pitcher?" + "\nYou have " + inventory.sugar.Count + " cups of sugar");
-            sugarAmount = int.Parse(Console.ReadLine());
-            if (sugarAmount >= inventory.sugar.Count)
+            try
             {
-                Console.WriteLine("You don't have enough sugar!" + "\nPress enter to try again!");
-                Console.ReadLine();
+                Console.WriteLine("How much sugar do you want per pitcher?" + "\nYou have " + inventory.sugar.Count + " cups of sugar");
+                sugarAmount = int.Parse(Console.ReadLine());
+                if (sugarAmount >= inventory.sugar.Count)
+                {
+                    Console.WriteLine("You don't have enough sugar!" + "\nPress enter to try again!");
+                    Console.ReadLine();
+                    GetSugarAmount(inventory);
+                }
+            }
+            catch(Exception)
+            {
+                Console.Clear();
                 GetSugarAmount(inventory);
             }
         }
@@ -70,12 +86,20 @@ namespace LemonadeStand
         }
         private void GetIceAmount(Inventory inventory)
         {
-            Console.WriteLine("How much ice do you want per pitcher?" + "\nYou have " + inventory.ice.Count + " cups of ice");
-            iceAmount = int.Parse(Console.ReadLine());
-            if (iceAmount >= inventory.ice.Count)
+            try
             {
-                Console.WriteLine("You don't have enough ice!" + "\nPress enter to try again!");
-                Console.ReadLine();
+                Console.WriteLine("How much ice do you want per pitcher?" + "\nYou have " + inventory.ice.Count + " cups of ice");
+                iceAmount = int.Parse(Console.ReadLine());
+                if (iceAmount >= inventory.ice.Count)
+                {
+                    Console.WriteLine("You don't have enough ice!" + "\nPress enter to try again!");
+                    Console.ReadLine();
+                    GetIceAmount(inventory);
+                }
+            }
+            catch(Exception)
+            {
+                Console.Clear();
                 GetIceAmount(inventory);
             }
         }

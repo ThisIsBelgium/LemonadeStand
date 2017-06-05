@@ -31,7 +31,7 @@ namespace LemonadeStand
             for (int i = 0; i <= 6; i++)
             {
                 forecast.Add(new Weather());
-                System.Threading.Thread.Sleep(50);
+                System.Threading.Thread.Sleep(20);
             }
         }
     }

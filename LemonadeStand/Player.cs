@@ -11,7 +11,7 @@ namespace LemonadeStand
         public Inventory inventory = new Inventory();
         public Recipe recipe = new Recipe();
         private string UserName;
-        private double funds = 200;
+        private double funds = 150;
         public void InitiatePlayer()
         {
             GetPlayerName();

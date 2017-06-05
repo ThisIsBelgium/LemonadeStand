@@ -55,7 +55,7 @@ namespace LemonadeStand
         {
             Console.WriteLine("You have " + "\n" + player.inventory.lemons.Count + " lemons" + "\n" + player.inventory.sugar.Count + " cups of sugar" +
                 "\n" + player.inventory.ice.Count + " cups of ice" + "\n" + player.inventory.cups.Count + " cups");
-            Console.WriteLine("Do you need more supplies (yes/no)" + "\n You have $" + player.Funds + " remaining");
+            Console.WriteLine("Do you need more supplies (yes/no)" + "\n You have $" + Math.Round(player.Funds,2) + " remaining");
             string resupplyCheck = Console.ReadLine();
             if (resupplyCheck == "yes")
             {
@@ -76,6 +76,15 @@ namespace LemonadeStand
                     Console.WriteLine(forecast[i].temperature + " Degrees" + "\n" + forecast[i].conditions + "\n");
 
                 }
+            }
+            else if (response == "no")
+            {
+                
+            }
+            else
+            {
+                Console.Clear();
+                ViewForecast(forecast, days);
             }
         }
         private void SellCup(Player player, Inventory inventory, Game game, Day day)
@@ -175,6 +184,7 @@ namespace LemonadeStand
         public void DisplayDailyProfit(Player player)
         {
             Console.WriteLine("$" + dailyProfit + " earned today");
+            Math.Round(player.Funds, 2);
             player.Funds += dailyProfit;
             Console.WriteLine("press enter to continue to the next day");
             Console.ReadLine();

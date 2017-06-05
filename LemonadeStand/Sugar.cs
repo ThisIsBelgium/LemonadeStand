@@ -12,7 +12,7 @@ namespace LemonadeStand
 
         public void GetPrice()
         {
-            sugarPrice = Math.Round(GetRandomNumber(.62, 1.15), 2);
+            sugarPrice = Math.Round(GetRandomNumber(.4, .8), 2);
         }
 
         private double GetRandomNumber(double min, double max)
