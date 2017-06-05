@@ -19,12 +19,12 @@ namespace LemonadeStand
             GetWeatherInformation();
             for (int days = 0; days <= 7; days++)
             {
-                day.NewDay(player, game, forecast,days,player.inventory,day);
+                day.NewDay(player, game, forecast, days, player.inventory, day);
             }
         }
         private void GetWeatherInformation()
         {
-            SetupForecast();     
+            SetupForecast();
         }
         private void SetupForecast()
         {
@@ -33,6 +33,6 @@ namespace LemonadeStand
                 forecast.Add(new Weather());
                 System.Threading.Thread.Sleep(50);
             }
-        }  
+        }
     }
 }

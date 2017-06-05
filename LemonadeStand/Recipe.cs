@@ -122,7 +122,7 @@ namespace LemonadeStand
                 return;
             }
             RemoveLemons(inventory);
-           if (sugarAmount > inventory.sugar.Count)
+            if (sugarAmount > inventory.sugar.Count)
             {
                 Console.WriteLine("Oh no you ran out of sugar, time to pack it up" + "\n press enter to continue");
                 Console.ReadLine();

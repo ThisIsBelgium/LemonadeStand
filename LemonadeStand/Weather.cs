@@ -17,13 +17,13 @@ namespace LemonadeStand
             this.conditions = GetConditions();
         }
 
-       
+
         private int GetTemperature()
         {
             temperature = GetRandomNumber(45, 85);
             return temperature;
         }
-            
+
         private string GetConditions()
         {
             int randomCondition = GetRandomNumber(1, 4);
@@ -31,7 +31,7 @@ namespace LemonadeStand
             {
                 case 1:
                     conditions = "Sunny";
-                    return conditions;                    
+                    return conditions;
                 case 2:
                     conditions = "Cloudy";
                     return conditions;
@@ -39,12 +39,12 @@ namespace LemonadeStand
                     conditions = "Rain-y";
                     return conditions;
             }
-            return conditions;   
+            return conditions;
         }
-        private int GetRandomNumber(int min,int max)
+        private int GetRandomNumber(int min, int max)
         {
             Random random = new Random();
-            return random.Next(min,max);
+            return random.Next(min, max);
         }
 
 

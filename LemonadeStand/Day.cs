@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace LemonadeStand
 {
     public class Day
-    { 
+    {
         List<Customer> customers = new List<Customer>();
         Store store = new Store();
         public double dailyProfit;

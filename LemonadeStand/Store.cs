@@ -55,8 +55,16 @@ namespace LemonadeStand
         }
         private void GetLemonAmount(Player player)
         {
-            Console.WriteLine("How many lemons do you want?" + "\n lemons currently cost:" + lemonPrice + "\n You currently have:" + player.Funds + "$" + " and " + player.inventory.lemons.Count + " lemons");
-            lemonAmount = int.Parse(Console.ReadLine());
+            try
+            {
+                Console.WriteLine("How many lemons do you want?" + "\n lemons currently cost:" + lemonPrice + "\n You currently have:" + player.Funds + "$" + " and " + player.inventory.lemons.Count + " lemons");
+                lemonAmount = int.Parse(Console.ReadLine());
+            }
+            catch(Exception)
+            {
+                Console.Clear();
+                GetLemonAmount(player);                
+            }
         }
         private void LemonTotalCost()
         {
@@ -78,8 +86,16 @@ namespace LemonadeStand
         }
         private void GetSugarAmount(Player player)
         {
-            Console.WriteLine("How much sugar do you want?" + "\n sugar currently cost:" + sugarPrice + "\n You currently have:" + player.Funds + "$" + " and " + player.inventory.sugar.Count + " cups of sugar");
-            sugarAmount = int.Parse(Console.ReadLine());
+            try
+            {
+                Console.WriteLine("How much sugar do you want?" + "\n sugar currently cost:" + sugarPrice + "\n You currently have:" + player.Funds + "$" + " and " + player.inventory.sugar.Count + " cups of sugar");
+                sugarAmount = int.Parse(Console.ReadLine());
+            }
+            catch(Exception)
+            {
+                Console.Clear();
+                GetSugarAmount(player);
+            }
         }
         private void SugarTotalCost()
         {
@@ -102,8 +118,16 @@ namespace LemonadeStand
         }
         private void GetIceAmount(Player player)
         {
-            Console.WriteLine("How much ice do you want?" + "\n ice currently cost:" + icePrice + "\n You currently have:" + player.Funds + "$" + " and " + player.inventory.ice.Count + " cups of ice");
-            iceAmount = int.Parse(Console.ReadLine());
+            try
+            {
+                Console.WriteLine("How much ice do you want?" + "\n ice currently cost:" + icePrice + "\n You currently have:" + player.Funds + "$" + " and " + player.inventory.ice.Count + " cups of ice");
+                iceAmount = int.Parse(Console.ReadLine());
+            }
+            catch(Exception)
+            {
+                Console.Clear();
+                GetIceAmount(player);
+            }
         }
         private void IceTotalCost()
         {
@@ -127,8 +151,16 @@ namespace LemonadeStand
         }
         private void GetCupAmount(Player player)
         {
-            Console.WriteLine("How many cups do you want?" + "\n cups currently cost:" + cupPrice + "\n You currently have:" + player.Funds + "$" + " and " + player.inventory.cups.Count + " cups ");
-            cupAmount = int.Parse(Console.ReadLine());
+            try
+            {
+                Console.WriteLine("How many cups do you want?" + "\n cups currently cost:" + cupPrice + "\n You currently have:" + player.Funds + "$" + " and " + player.inventory.cups.Count + " cups ");
+                cupAmount = int.Parse(Console.ReadLine());
+            }
+            catch(Exception)
+            {
+                Console.Clear();
+                GetCupAmount(player);
+            }
         }
         private void CupTotalCost()
         {

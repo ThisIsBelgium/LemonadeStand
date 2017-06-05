@@ -32,7 +32,7 @@ namespace LemonadeStand
         }
         private double GetBudget()
         {
-            budget = Math.Round(GetRandomDouble(.1, 1.76),2);
+            budget = Math.Round(GetRandomDouble(.1, 1.76), 2);
             return budget;
 
 
