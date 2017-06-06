@@ -13,6 +13,7 @@ namespace LemonadeStand
         public double dailyProfit;
         public void NewDay(Player player, Game game, List<Weather> forecast, int days, Inventory inventory, Day day)
         {
+            dailyProfit = 0;
             Console.Clear();
             store.GeneratePrices();
             ViewForecast(forecast, days);
